@@ -1,0 +1,299 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nrzt.cps</groupId>
+	<artifactId>CPS</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.1</version>
+	<name>CPS</name>
+	<!-- 共享源 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.2.RELEASE</version>
+		<relativePath />
+	</parent>
+	
+	<properties>	
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<fastjson.version>1.2.62</fastjson.version>
+		<druid.version>1.1.10</druid.version>
+	</properties>
+	
+	<dependencies>
+		<!-- spring boot 核心依賴 共享無需指定版本 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+
+<dependency>
+    <groupId>com.bstek.ureport</groupId>
+    <artifactId>ureport2-console</artifactId>
+    <version>2.2.9</version>
+</dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.2</version>            
+        </dependency>   
+          
+        <!-- druid -->
+        <dependency>
+		   <groupId>com.alibaba</groupId>
+		   <artifactId>druid-spring-boot-starter</artifactId>
+		   <version>${druid.version}</version>
+		</dependency>
+        
+          <!--devtools热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
+        <!-- 分页 -->
+        <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper-spring-boot-starter</artifactId>
+		    <version>1.2.13</version>
+		</dependency>
+        <!--  
+        <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>5.1.1</version>
+		</dependency>
+        -->
+    	<!-- Oracle -->
+		<dependency>
+			<groupId>ojdbc8</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ojdbc8.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>			
+
+		<!-- swagger 数据接口文档生成依赖 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<!--<version>2.6.1</version>-->
+			 <version>2.7.0</version>
+		</dependency>
+		<!-- swagger 数据接口ui界面依赖包 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<!--<version>2.6.1</version>-->
+			<version>2.7.0</version>
+		</dependency>
+
+		<!--<dependency>
+			<groupId>com.battcn</groupId>
+			<artifactId>spring-boot-starter-swagger</artifactId>
+			<version>1.4.4-RELEASE</version>
+		</dependency>-->
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+		   <groupId>com.alibaba</groupId>
+		   <artifactId>fastjson</artifactId>
+		   <version>${fastjson.version}</version>
+		</dependency>			
+
+		<dependency>
+			<groupId>ztutil</groupId>
+			<artifactId>ztutil</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ZTCommon.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>ztprotocol</groupId>
+			<artifactId>ztprotocol</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ZTProtocols.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>ztiotrwc</groupId>
+			<artifactId>ztiotrwc</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ZTIoTRWC.jar</systemPath>
+		</dependency>
+		
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>-->
+        <dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version><!--注意：20160810版本不支持JSONArray-->
+		</dependency>
+<!-- 前置需用到的jar -->
+		
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-client</artifactId>
+		    </dependency>
+		<!-- 
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-all</artifactId>
+		    <version>5.15.8</version>
+		</dependency>
+		 -->
+		<dependency>
+		    <groupId>org.apache.mina</groupId>
+		    <artifactId>mina-core</artifactId>
+		    <version>2.1.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>1.9.3</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-configuration2</artifactId>
+		    <version>2.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-jxpath</groupId>
+		    <artifactId>commons-jxpath</artifactId>
+		    <version>1.3</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    </dependency>
+		
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-pool2</artifactId>
+		    </dependency>
+		
+		<dependency>
+		    <groupId>org.apache.geronimo.specs</groupId>
+		    <artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
+		    <version>1.0.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.geronimo.specs</groupId>
+		    <artifactId>geronimo-jms_1.1_spec</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.fusesource.hawtbuf</groupId>
+		    <artifactId>hawtbuf</artifactId>
+		    <version>1.11</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>redis.clients</groupId>
+		    <artifactId>jedis</artifactId>
+		    </dependency>
+		
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+		</dependency>
+
+    </dependencies>
+
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>nrzt.cps.application.CpsApplication</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>		
+				<artifactId>maven-surefire-plugin</artifactId>		
+				<configuration>		
+					<testFailureIgnore>true</testFailureIgnore>		
+				</configuration>		
+			</plugin>
+				
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>					
+			</plugin>				
+        </plugins>
+        	
+        <!-- 配置说明引用本地路径JAR包-->
+	    <resources>
+			<resource>		
+				<directory>lib</directory>		
+				<targetPath>BOOT-INF/lib/</targetPath>		
+				<includes>		
+					<include>**/*.jar</include>		
+				</includes>		
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<!--<include>application.properties</include>
+					<include>log4j2.xml</include>
+					<include>banner.txt</include>-->
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+    </build>
+    
+</project>

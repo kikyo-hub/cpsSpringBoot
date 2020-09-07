@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nrzt.cps.user.mapper.UserMapper">	
+    <select id="findUserRole" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select * from p_role pr,P_USER_ROLE_RELA pur where pur.role_id=pr.role_id and pur.user_id=#{userid}
+    </select>
+    <select id="findUserFatherMenu" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select p.role_id,pm.menu_id,pm.up_menu_id,pm.menu_type,pm.menu_name,pm.icon,pm.WEB_URL from P_ROLE_MENU_RELA p left join p_menu pm on (p.menu_id = pm.menu_id) where p.role_id = #{roleid} and pm.menu_type='1' and pm.is_valid=1 order by pm.auth_id
+    </select>
+    <select id="findUserChildMenu" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select p.role_id,pm.menu_id,pm.up_menu_id,pm.menu_type,pm.menu_name,pm.icon,pm.WEB_URL from P_ROLE_MENU_RELA p left join p_menu pm on (p.menu_id = pm.menu_id) where p.role_id = #{roleid} and pm.menu_type='2' and pm.is_valid=1 order by pm.auth_id
+    </select>
+    <select id="findUser03Menu" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select p.role_id,pm.menu_id,pm.up_menu_id,pm.menu_type,pm.menu_name,pm.icon,pm.WEB_URL from P_ROLE_MENU_RELA p left join p_menu pm on (p.menu_id = pm.menu_id) where p.role_id = #{roleid} and pm.menu_type='3' and pm.is_valid=1 order by pm.auth_id
+    </select>
+</mapper>
